@@ -1,0 +1,571 @@
+{
+ "app": "NetworkDiagram",
+ "version": 1,
+ "next_id": 36,
+ "images": {},
+ "pages": [
+  {
+   "name": "Campus",
+   "shapes": [
+    {
+     "id": "s1",
+     "kind": "container",
+     "x": 180,
+     "y": 40,
+     "w": 640,
+     "h": 250,
+     "label": "Edge / DMZ",
+     "font": 13,
+     "show_ip": true,
+     "data": {
+      "ip": "",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s2",
+     "kind": "container",
+     "x": 60,
+     "y": 330,
+     "w": 880,
+     "h": 520,
+     "label": "HQ Campus",
+     "font": 13,
+     "show_ip": true,
+     "data": {
+      "ip": "",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     },
+     "fill": "#f2f9f3",
+     "line": "#5e8f68"
+    },
+    {
+     "id": "s3",
+     "kind": "internet",
+     "x": 452.0,
+     "y": 50.0,
+     "w": 96,
+     "h": 60,
+     "label": "Internet",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s4",
+     "kind": "firewall",
+     "x": 370.0,
+     "y": 195.0,
+     "w": 60,
+     "h": 50,
+     "label": "FW-01",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "10.0.0.1",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s5",
+     "kind": "firewall",
+     "x": 570.0,
+     "y": 195.0,
+     "w": 60,
+     "h": 50,
+     "label": "FW-02",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "10.0.0.2",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s6",
+     "kind": "l3switch",
+     "x": 365.0,
+     "y": 378.0,
+     "w": 70,
+     "h": 44,
+     "label": "CORE-01",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "10.1.0.1",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s7",
+     "kind": "l3switch",
+     "x": 565.0,
+     "y": 378.0,
+     "w": 70,
+     "h": 44,
+     "label": "CORE-02",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "10.1.0.2",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s8",
+     "kind": "switch",
+     "x": 165.0,
+     "y": 538.0,
+     "w": 70,
+     "h": 44,
+     "label": "ACC-01",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "10.1.10.11",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s9",
+     "kind": "switch",
+     "x": 465.0,
+     "y": 538.0,
+     "w": 70,
+     "h": 44,
+     "label": "ACC-02",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "10.1.10.12",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s10",
+     "kind": "switch",
+     "x": 765.0,
+     "y": 538.0,
+     "w": 70,
+     "h": 44,
+     "label": "ACC-03",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "10.1.10.13",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s11",
+     "kind": "wlc",
+     "x": 825.0,
+     "y": 378.0,
+     "w": 70,
+     "h": 44,
+     "label": "WLC-01",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "10.1.0.20",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s12",
+     "kind": "ucserver",
+     "x": 120.0,
+     "y": 370.0,
+     "w": 40,
+     "h": 60,
+     "label": "CUCM-01",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "10.1.5.10",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s13",
+     "kind": "ipphone",
+     "x": 125.0,
+     "y": 698.0,
+     "w": 50,
+     "h": 44,
+     "label": "Phones",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s14",
+     "kind": "pc",
+     "x": 222.0,
+     "y": 694.0,
+     "w": 56,
+     "h": 52,
+     "label": "Users",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s15",
+     "kind": "ap",
+     "x": 472.0,
+     "y": 700.0,
+     "w": 56,
+     "h": 40,
+     "label": "AP-01",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    },
+    {
+     "id": "s16",
+     "kind": "video",
+     "x": 765.0,
+     "y": 695.0,
+     "w": 70,
+     "h": 50,
+     "label": "Room Kit",
+     "font": 11,
+     "show_ip": true,
+     "data": {
+      "ip": "",
+      "model": "",
+      "serial": "",
+      "location": "",
+      "notes": ""
+     }
+    }
+   ],
+   "conns": [
+    {
+     "id": "c17",
+     "src": "s3",
+     "dst": "s4",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "port1",
+     "font": 9
+    },
+    {
+     "id": "c18",
+     "src": "s3",
+     "dst": "s5",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "port1",
+     "font": 9
+    },
+    {
+     "id": "c19",
+     "src": "s4",
+     "dst": "s5",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "dashed",
+     "arrow": "none",
+     "label": "",
+     "src_label": "HA",
+     "dst_label": "HA",
+     "font": 9
+    },
+    {
+     "id": "c20",
+     "src": "s4",
+     "dst": "s6",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "port3",
+     "dst_label": "Te1/0/1",
+     "font": 9
+    },
+    {
+     "id": "c21",
+     "src": "s5",
+     "dst": "s7",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "port3",
+     "dst_label": "Te1/0/1",
+     "font": 9
+    },
+    {
+     "id": "c22",
+     "src": "s6",
+     "dst": "s7",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "Po1",
+     "src_label": "Te1/0/48",
+     "dst_label": "Te1/0/48",
+     "font": 9
+    },
+    {
+     "id": "c23",
+     "src": "s6",
+     "dst": "s7",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "",
+     "font": 9
+    },
+    {
+     "id": "c24",
+     "src": "s6",
+     "dst": "s8",
+     "style": "orthogonal",
+     "color": "#2c3e50",
+     "width": 1.5,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "Te1/1/1",
+     "font": 9
+    },
+    {
+     "id": "c25",
+     "src": "s7",
+     "dst": "s8",
+     "style": "orthogonal",
+     "color": "#2c3e50",
+     "width": 1.5,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "Te1/1/2",
+     "font": 9
+    },
+    {
+     "id": "c26",
+     "src": "s6",
+     "dst": "s9",
+     "style": "orthogonal",
+     "color": "#2c3e50",
+     "width": 1.5,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "Te1/1/1",
+     "font": 9
+    },
+    {
+     "id": "c27",
+     "src": "s7",
+     "dst": "s9",
+     "style": "orthogonal",
+     "color": "#2c3e50",
+     "width": 1.5,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "Te1/1/2",
+     "font": 9
+    },
+    {
+     "id": "c28",
+     "src": "s6",
+     "dst": "s10",
+     "style": "orthogonal",
+     "color": "#2c3e50",
+     "width": 1.5,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "Te1/1/1",
+     "font": 9
+    },
+    {
+     "id": "c29",
+     "src": "s7",
+     "dst": "s10",
+     "style": "orthogonal",
+     "color": "#2c3e50",
+     "width": 1.5,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "Te1/1/2",
+     "font": 9
+    },
+    {
+     "id": "c30",
+     "src": "s7",
+     "dst": "s11",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "",
+     "font": 9
+    },
+    {
+     "id": "c31",
+     "src": "s6",
+     "dst": "s12",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "",
+     "font": 9
+    },
+    {
+     "id": "c32",
+     "src": "s8",
+     "dst": "s13",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "",
+     "font": 9
+    },
+    {
+     "id": "c33",
+     "src": "s8",
+     "dst": "s14",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "",
+     "font": 9
+    },
+    {
+     "id": "c34",
+     "src": "s9",
+     "dst": "s15",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "",
+     "font": 9
+    },
+    {
+     "id": "c35",
+     "src": "s10",
+     "dst": "s16",
+     "style": "straight",
+     "color": "#2c3e50",
+     "width": 2,
+     "dash": "solid",
+     "arrow": "none",
+     "label": "",
+     "src_label": "",
+     "dst_label": "",
+     "font": 9
+    }
+   ]
+  }
+ ]
+}
