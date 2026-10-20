@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Collab Room Planner</title>
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.js","three/addons/controls/OrbitControls.js":"./vendor/OrbitControls.js"}}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Collab Room Planner</h1>
+      <p>Lay out a meeting room, drop in a Cisco, Logitech, MAXHUB or Huawei device, and check camera coverage, mic pickup and display size per seat, in plan or in 3D.</p>
+    </div>
+    <div class="actions">
+      <button class="btn ghost" id="openProj" title="Ctrl+O">Open…</button>
+      <button class="btn ghost" id="importVrc" title="Import a Video Room Calculator .vrc.json (Ctrl+I)">Import VRC…</button>
+      <button class="btn ghost" id="saveProj" title="Ctrl+S">Save…</button>
+      <button class="btn" id="exportXlsx" title="Ctrl+E">Export BOQ to Excel</button>
+      <span class="status" id="appStatus" role="status"></span>
+    </div>
+  </header>
+
+  <section class="sheet" aria-labelledby="room-h">
+    <h2 id="room-h">Room</h2>
+    <div class="fields">
+      <div class="field wide"><label class="label" for="pname">Project / room name</label><input id="pname" type="text" placeholder="e.g. Customer HQ, Level 3 boardroom"></div>
+    </div>
+    <div class="label" style="margin-top:12px">Room type</div>
+    <div class="seg" id="layoutSeg" role="group" aria-label="Room type" style="margin:6px 0 4px">
+      <button data-l="board">Boardroom</button><button data-l="class">Classroom</button><button data-l="audi">Auditorium</button><button data-l="vrc" hidden>Imported (VRC)</button>
+    </div>
+    <div class="label" style="margin-top:12px">Presets</div>
+    <div class="presets" id="presets"></div>
+    <div class="fields">
+      <div class="field"><label class="label" for="W">Width (m)</label><input id="W" type="number" min="2" max="50" step="0.1"></div>
+      <div class="field"><label class="label" for="D">Depth from display (m)</label><input id="D" type="number" min="2" max="50" step="0.1"></div>
+      <div class="field"><label class="label" for="H">Ceiling height (m)</label><input id="H" type="number" min="2.2" max="6" step="0.1"></div>
+      <div class="field"><label class="label" for="seats">Seats</label><input id="seats" type="number" min="1" max="200" step="1"></div>
+      <div class="field"><label class="label" for="tw">Table width (m)</label><input id="tw" type="number" min="0.6" max="3" step="0.1"></div>
+      <div class="field"><label class="label" for="gap" id="gapLbl">Display to table (m)</label><input id="gap" type="number" min="0.5" max="10" step="0.1"></div>
+      <div class="field"><label class="label" for="plan">Mic planning radius <span id="planv"></span></label><input id="plan" type="range" min="40" max="100" step="5"></div>
+    </div>
+    <div class="toggles">
+      <label><input type="checkbox" id="compare"> Compare two devices</label>
+      <label><input type="checkbox" id="dual"> Dual displays (video bars)</label>
+      <label><input type="checkbox" id="sync"> Link the two 3D views</label>
+    </div>
+  </section>
+
+
+  <details class="sheet" id="installCfg" open>
+    <summary><h2>Mounting &amp; cabling</h2></summary>
+    <div class="label">Mounting heights and distances</div>
+    <div class="fields">
+      <div class="field"><label class="label" for="mount-bottom">Display bottom edge AFF (m)</label><input id="mount-bottom" data-grp="mount" data-key="bottom" type="number" min="0.5" max="3" step="0.05"></div>
+      <div class="field"><label class="label" for="mount-bar">Video bar position</label><select id="mount-bar" data-grp="mount" data-key="bar"><option value="above">Above the display</option><option value="below">Below the display</option></select></div>
+      <div class="field"><label class="label" for="mount-wallH">Wall camera height (m)</label><input id="mount-wallH" data-grp="mount" data-key="wallH" type="number" min="1" max="5" step="0.05"></div>
+      <div class="field"><label class="label" for="mount-cornerH">Corner camera height (m)</label><input id="mount-cornerH" data-grp="mount" data-key="cornerH" type="number" min="1" max="5" step="0.05"></div>
+      <div class="field"><label class="label" for="mount-sideY">Side cameras from display wall (m, 0 = auto)</label><input id="mount-sideY" data-grp="mount" data-key="sideY" type="number" min="0" max="30" step="0.1"></div>
+    </div>
+    <div class="label" style="margin-top:14px">Cable laying</div>
+    <div class="fields">
+      <div class="field"><label class="label" for="cab-rack">Equipment location</label><select id="cab-rack" data-grp="cab" data-key="rack">
+        <option value="credenza">Credenza under the display</option><option value="behind">Behind the display (in-wall)</option>
+        <option value="fl">Front-left corner rack</option><option value="fr">Front-right corner rack</option>
+        <option value="rl">Rear-left corner rack</option><option value="rr">Rear-right corner rack</option></select></div>
+      <div class="field"><label class="label" for="cab-route">Cable route</label><select id="cab-route" data-grp="cab" data-key="route">
+        <option value="ceiling">Ceiling void</option><option value="floor">Raised floor / floor ducts</option><option value="trunk">Wall trunking (skirting)</option></select></div>
+      <div class="field"><label class="label" for="cab-uplink">Rack to network switch / IDF (m)</label><input id="cab-uplink" data-grp="cab" data-key="uplink" type="number" min="0" max="90" step="1"></div>
+      <div class="field"><label class="label" for="cab-slack">Slack (%)</label><input id="cab-slack" data-grp="cab" data-key="slack" type="number" min="0" max="50" step="1"></div>
+      <div class="field"><label class="label" for="cab-loop">Service loop each end (m)</label><input id="cab-loop" data-grp="cab" data-key="loop" type="number" min="0" max="3" step="0.1"></div>
+    </div>
+    <div class="toggles">
+      <label><input type="checkbox" id="cab-floorBox" data-grp="cab" data-key="floorBox"> Floor box under the table / at the lectern</label>
+      <label><input type="checkbox" id="cab-show" data-grp="cab" data-key="show"> Show cable routes in 3D and 2D</label>
+    </div>
+  </details>
+
+  <section class="plans" id="plans" aria-label="Room views"></section>
+
+  <section class="sheet" aria-labelledby="inst-h">
+    <h2 id="inst-h">Installation: mounting &amp; cable schedule</h2>
+    <div class="boq" id="inst"></div>
+  </section>
+
+  <section class="sheet" aria-labelledby="boq-h">
+    <h2 id="boq-h">Bill of quantities</h2>
+    <div class="boq" id="boq"></div>
+  </section>
+
+  <footer>
+    <p><b>About the numbers.</b> Values tagged <span class="src ds">datasheet</span> come from vendor or distributor spec pages. Values tagged <span class="src">est.</span> are planning estimates; edit them in each device card to match the current datasheet before you send a design to a customer. Edited values are saved with the project.</p>
+    <p>Camera reach is the farthest seat at which a face is framed usefully, not the lens's optical limit. Mic pickup uses the vendor's figure scaled by the planning radius slider, since rated pickup assumes a quiet, treated room. Display size uses the 6× rule: the farthest seat sits no more than six image-heights from the screen.</p>
+    <p><b>3D view.</b> Drag to orbit, right-drag to pan, scroll to zoom. <i>Camera view</i> shows the room through the device's lens at its horizontal field of view.</p>
+  </footer>
+</div>
+<script src="app.js"></script>
+<script src="audio.js"></script>
+<script src="install.js"></script>
+<script src="vrc.js"></script>
+<script type="module" src="view3d.js"></script>
+</body>
+</html>
